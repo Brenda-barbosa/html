@@ -1,0 +1,28 @@
+create schema Webjump;
+
+use Webjump;
+
+create table Categoria
+(
+	cat_id varchar(255) not null,
+	nome varchar(255) not null,
+	constraint Categoria_pk
+		primary key (cat_id)
+);
+
+create table Produto
+(
+	prod_id int auto_increment,
+	nome varchar(255) not null,
+	sku varchar(255) null,
+	preco double not null,
+	quantidade int not null,
+	categoria varchar(255) not null,
+	descricao longtext not null,
+	constraint Produto_pk
+		primary key (prod_id)
+);
+
+alter table Produto
+  add foreign key (categoria)
+      references Categoria (cad_id);
